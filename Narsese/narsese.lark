@@ -1,0 +1,25 @@
+?start: task
+
+task: sentence
+
+?sentence : (term|statement) "." [truth] -> judgement
+
+?statement : "<" term copula term ">"
+
+?copula : "-->" -> inheritance
+        | "<->" -> similarity
+
+?term: word -> atom_term
+        
+truth : "%" frequency [";" confidence] "%"
+
+?word : string_raw | string // /[^\ ]+/     
+
+?frequency : /([0]?\.[0-9]+|1\.[0]*|1|0)/ 
+?confidence : /[0]?\.[0]*[1-9]{1}[0-9]*/    
+
+?string: /"[^"]+"/
+?string_raw: /[^\-^\+^<^>^=^"^&^|^!^.^?^@^~^%^;^\,^:^\/^\\^*^#^$^\[^\]^\{^\}^\(^\)^\ ]+/
+
+%import common.WS
+%ignore WS

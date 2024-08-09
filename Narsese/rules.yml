@@ -1,0 +1,16 @@
+name: NAL Rules
+
+rules:
+  nal1: |
+    {<M --> P>. <S --> M>} |- <S --> P> .ded
+    {<M --> P>. <M --> S>} |- <S --> P> .ind
+    {<P --> M>. <S --> M>} |- <S --> P> .abd
+    {<P --> M>. <M --> S>} |- <S --> P> .exe
+  
+  nal2: |
+    {<M <-> P>. <S <-> M>} |- <S <-> P> .res
+    {<M --> P>. <M --> S>} |- <S <-> P> .com
+    {<P --> M>. <S --> M>} |- <S <-> P> .com
+    {<M --> P>. <S <-> M>} |- <S --> P> .ana
+    {<P --> M>. <S <-> M>} |- <P --> S> .ana
+    {<S --> M>. <M <-> P>} |- <S --> P> .ana
